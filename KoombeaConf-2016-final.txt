@@ -28,6 +28,7 @@ TABLA DE CONTENIDOS                                                     *Index*
     3. Modificar Texto .................................. |sed|
     4. Trabajo Remoto ................................... |ssh|
     5. Personalizacion .................................. |nixfiles|
+    6. Conclusion ....................................... |questions|
 
 
 We keep moving forward, opening new doors, and doing new things, because we're
@@ -35,13 +36,16 @@ curious and curiosity keeps leading us down new paths.
                                                              Walt Disney~
 
 ===============================================================================
-Parte 1: Buscar Archivos 								                                 *find*
+Parte 1: Buscar Archivos                                                 *find*
 
 <find>            Buscar archivos en el arbol de directorios dado un nombre de
                   archivo.
 
 {{{                                                                 *vim-tip-1*
-:r  <comando>     Interactuar con la consola
+:r  !<comando>    Interactuar con la consola e insertar la salida del comando
+                  en el buffer actual.
+
+:r archivo        Insertar el contenido del archivo en el buffer actual.
 }}}
 
                   Ejemplo:
@@ -50,6 +54,10 @@ Parte 1: Buscar Archivos 								                                 *find*
 
 {{{                                                                 *vim-tip-2*
 <g-f>             Navegar al archivo bajo el cursos (si existe).
+
+<C-o>, <C-i>      Navegar a la posicion anterior/siguiente.
+
+<C-^>, <C-6>      Alt-Tab Hehe...no mentiras. Pero casi.
 }}}
 
 ===============================================================================
@@ -103,10 +111,137 @@ Parte 3: Modificar Texto                                                  *sed*
 ===============================================================================
 Parte 4: Trabajo Remoto                                                   *ssh*
 
-<ssh>             Abre una consola segura en un computador remoto.
+<ssh>             Abre una consola segura en un servidor remoto.
 
+  ~/.ssh/config ~
+    Host lala
+     HostName test.machine.example.net
+     User remoteuser
+     IdentityFile ~/.ssh/id_for_test.machine
+     Port 57
+
+                  Ejemplo:
+
+                    ssh lala # Great Success!
+
+
+<scp>             Copia seguramente archivos entre servidores.
+
+                  Ejemplo:
+
+                    scp lala://home/.vimrc .
+                    scp ~/.vimrc lala://home/
+
+<curl>            Cliente HTTP, sirve para crear y ejecutar peticiones HTTP y
+                  HTTPS
+
+  curl -I google.com ~
+    HTTP/1.1 302 Found
+    Cache-Control: private
+    Content-Type: text/html; charset=UTF-8
+    Location: http://www.google.com.co/?gfe_rd=cr&ei=hmJCWK6qHc7I8AfB-4zwBw
+    Content-Length: 262
+    Date: Sat, 03 Dec 2016 06:13:26 GMT
+
+  curl -O https://github.com/jfgomez86.keys ~
+
+  curl -s https://github.com/jfgomez86.keys >> ~/.ssh/authorized_keys ~
+
+{{{                                                                 *vim-tip-7*
+<g-f>             Tambien se puede utilizar con archivos remotos.
+}}}
+
+<bash>,<zsh>      Aprendete las hotkeys!
 
 ===============================================================================
 Parte 5: Personalizacion                                             *nixfiles*
+
+<bash-functions>
+
+  PROJECTS_DIR=/home/pi
+
+  p() {
+    PROJECT_NAME="$1";
+    cd "$PROJECTS_DIR/$PROJECT_NAME";
+  }
+
+  _p_complete() {
+    local cur opts
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts="$(ls $PROJECTS_DIR)"
+
+    COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+    return 0
+  }
+  complete -F _p_complete p
+
+<vimfiles>
+
+  Pathogen ~
+    This is a very nice plugin manager for Vim.
+
+  Maintain your own vimfiles ~
+    https://github.com/jfgomez86/vimfiles-light   Shameless self-promotion
+
+{{{                                                                 *vim-tip-8*
+:'<,'>w           Guarda la seleccion visual en un archivo.
+:sh               Abre una consola desde vim.
+}}}
+
+
+===============================================================================
+Parte 6: Conclusion                                                 *questions*
+
+Nice Tips: ~
+  http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about
+
+Awesome screencasts: ~
+  https://www.destroyallsoftware.com/screencasts
+
+Twitter: ~
+  https://twitter.com/vimtips?lang=en
+
+Questions? ~
+
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+                        .
+
+
+
+
+   .▄▄.•.▄▄▄...▄▄▄·..▄▄·.▪...▄▄▄·..▄▄.·.
+   ▐█.▀.▪▀▄.█·▐█.▀█.▐█.▌▪██.▐█.▀█.▐█.▀..
+   ▄█.▀█▄▐▀▀▄.▄█▀▀█.██.▄▄▐█·▄█▀▀█.▄▀▀▀█▄
+   ▐█▄▪▐█▐█•█▌▐█.▪▐▌▐███▌▐█▌▐█.▪▐▌▐█▄▪▐█
+   ·▀▀▀▀..▀..▀.▀..▀.·▀▀▀.▀▀▀.▀..▀..▀▀▀▀.
 
 // vim: ft=help foldmethod=marker modifiable noreadonly
