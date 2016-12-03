@@ -1,0 +1,112 @@
+*KoombeaConf-2016-final.txt* Cómo ser más productivo como desarrollador
+
+ __      ___               ____            _
+ \ \    / (_)             |  _ \          | |
+  \ \  / / _ _ __ ___     | |_) | __ _ ___| |__
+   \ \/ / | | '_ ` _ \    |  _ < / _` / __| '_ \
+    \  /  | | | | | | |_  | |_) | (_| \__ \ | | |
+     \/   \_|_/ |_/ |_( ) |____/ \__,_|___/_/ \_|
+                      |/
+                     _    _____ _____ _    _
+                    | |  / ____/ ____| |  | |
+      __ _ _ __   __| | | (___| (___ | \__| |
+     / _` | '_ \ / _` |  \___ \\___ \|  __  |
+    | (_| | | | | (_| |  ____) |___) | |  | |
+     \__,_\_| /_|\__,_/ /_____/_____//_|  /_|
+
+
+Cómo ser más productivo como desarrollador, usando herramientas de la línea de
+comandos que funcionan correctamente sin importar cuál es tu ambiente de
+trabajo (local o remoto).
+
+
+===============================================================================
+TABLA DE CONTENIDOS                                                     *Index*
+
+    1. Buscar Archivos .................................. |find|
+    2. Buscar Texto Dentro De Archivos .................. |grep|
+    3. Modificar Texto .................................. |sed|
+    4. Trabajo Remoto ................................... |ssh|
+    5. Personalizacion .................................. |nixfiles|
+
+
+We keep moving forward, opening new doors, and doing new things, because we're
+curious and curiosity keeps leading us down new paths.
+                                                             Walt Disney~
+
+===============================================================================
+Parte 1: Buscar Archivos 								                                 *find*
+
+<find>            Buscar archivos en el arbol de directorios dado un nombre de
+                  archivo.
+
+{{{                                                                 *vim-tip-1*
+:r  <comando>     Interactuar con la consola
+}}}
+
+                  Ejemplo:
+
+                    find ~/ -name 'xr*'
+
+{{{                                                                 *vim-tip-2*
+<g-f>             Navegar al archivo bajo el cursos (si existe).
+}}}
+
+===============================================================================
+Parte 2: Buscar Texto Dentro De Archivos                                 *grep*
+
+<grep>            Buscar dentro de archivos, lineas conteniendo un patron de
+                  texto.
+
+{{{                                                                 *vim-tip-3*
+<C-x><C-f>        Autocompletar archivos.
+}}}
+
+                  Ejemplo:
+
+                    grep -nr 'kotaku' ~/idealzco/*
+
+{{{                                                                 *vim-tip-4*
+<gF>              Abrir archivo e ir a la linea especificada.
+
+<C-w><F>          Abrir archivo en una ventana nueva e ir a la linea
+                  especificada.
+}}}
+
+===============================================================================
+Parte 3: Modificar Texto                                                  *sed*
+
+<sed>             Editor de texto de linea de comandos no interactivo. Sirve
+                  para editar texto desde la linea de comandos sin ser
+                  interactivo. Duh!
+
+{{{                                                                 *vim-tip-5*
+<macros>          Usa <q> seguido de una letra para grabar una macro en esa
+                  letra.
+                  Usa <@> seguido de la letra donde grabaste la macro para
+                  ejecutarla.
+
+  ggy$''Pa: A,jggjy$''Pa: A,jggjjy$''Pa: A,jggjjjy$''Pa: A,jggjjjjy$''Pa: A,jggjjjjjy$''Pa: A,jggjjjjjjy$''Pa: A,jj
+}}}
+
+                  Ejemplo:
+
+                    sed 's/\t/,/g' nasa_19950801.tsv > nasa_19950801.csv
+
+{{{                                                                 *vim-tip-6*
+<substitute>      Usa :<rango>s/buscar/sustituir-por/g para buscar y reemplazar
+
+  :%s/[\t]\+/\r/g
+}}}
+
+
+===============================================================================
+Parte 4: Trabajo Remoto                                                   *ssh*
+
+<ssh>             Abre una consola segura en un computador remoto.
+
+
+===============================================================================
+Parte 5: Personalizacion                                             *nixfiles*
+
+// vim: ft=help foldmethod=marker modifiable noreadonly
