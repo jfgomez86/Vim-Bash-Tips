@@ -192,6 +192,25 @@ Parte 5: Personalizacion                                             *nixfiles*
 ===============================================================================
 Parte 6: Conclusion                                                 *questions*
 
+curl -s https://gist.githubusercontent.com/tlongren/7697704d62f26235661e/raw/cea27520abffcbf24abc6d3daaa2e79fec330502/ugly.json
+
+{{{                                                                 *vim-tip-9*
+:.!comando        Filtrar la linea actual.
+                  Ejemplo:
+                    :.!python -m json.tool
+}}}
+
+
+Easter Eggs: ~
+
+  :set rightleft
+  :help uganda
+  :help!
+  :help 42
+  :help quotes
+  :help holy-grail
+
+
 Nice Tips: ~
   http://stackoverflow.com/questions/726894/what-are-the-dark-corners-of-vim-your-mom-never-told-you-about
 
