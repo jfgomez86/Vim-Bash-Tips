@@ -7,7 +7,7 @@
     \  /  | | | | | | |_  | |_) | (_| \__ \ | | |
      \/   \_|_/ |_/ |_( ) |____/ \__,_|___/_/ \_|
                       |/
-                     _    _____ _____ _    _
+                     _    _____ _____ _    _   ZSH too (mostly)!!
                     | |  / ____/ ____| |  | |
       __ _ _ __   __| | | (___| (___ | \__| |
      / _` | '_ \ / _` |  \___ \\___ \|  __  |
@@ -31,6 +31,7 @@ TABLA DE CONTENIDOS                                                     *Index*
     6. Conclusion ....................................... |questions|
 
 
+
 We keep moving forward, opening new doors, and doing new things, because we're
 curious and curiosity keeps leading us down new paths.
                                                              Walt Disney~
@@ -51,6 +52,9 @@ Parte 1: Buscar Archivos                                                 *find*
                   Ejemplo:
 
                     find ~/ -name 'xr*'
+/home/pi/xr-sinatra
+/home/pi/idealzco/vendor/bundles/ruby/2.0.0/gems/rdoc-3.12.2/test/xref_data.rb
+/home/pi/idealzco/vendor/bundles/ruby/2.0.0/gems/rdoc-3.12.2/test/xref_test_case.rb
 
 {{{                                                                 *vim-tip-2*
 <g-f>             Navegar al archivo bajo el cursos (si existe).
@@ -73,6 +77,10 @@ Parte 2: Buscar Texto Dentro De Archivos                                 *grep*
                   Ejemplo:
 
                     grep -nr 'kotaku' ~/idealzco/*
+/home/pi/idealzco/app/models/deal.rb:87:  # http://kotaku.com/tag/deals/rss
+/home/pi/idealzco/app/models/deal.rb:95:    when /kotaku/
+/home/pi/idealzco/lib/tasks/items.rake:11:      http://kotaku.com/tag/deals/rss
+
 
 {{{                                                                 *vim-tip-4*
 <gF>              Abrir archivo e ir a la linea especificada.
@@ -94,7 +102,9 @@ Parte 3: Modificar Texto                                                  *sed*
                   Usa <@> seguido de la letra donde grabaste la macro para
                   ejecutarla.
 
-  ggy$''Pa: A,jggjy$''Pa: A,jggjjy$''Pa: A,jggjjjy$''Pa: A,jggjjjjy$''Pa: A,jggjjjjjy$''Pa: A,jggjjjjjjy$''Pa: A,jj
+Ayer:  ggy$''Pa: A,jggjy$''Pa: A,jggjjy$''Pa: A,jggjjjy$''Pa: A,jggjjjjy$''Pa: A,jggjjjjjy$''Pa: A,jggjjjjjjy$''Pa: A,jj
+
+Hoy: Ihost: jIlogname: jIme�kb�kbtime: jImethod: jIurl: jIresponse: jIbyte�kbes: jj
 }}}
 
                   Ejemplo:
@@ -192,7 +202,40 @@ Parte 5: Personalizacion                                             *nixfiles*
 ===============================================================================
 Parte 6: Conclusion                                                 *questions*
 
-curl -s https://gist.githubusercontent.com/tlongren/7697704d62f26235661e/raw/cea27520abffcbf24abc6d3daaa2e79fec330502/ugly.json
+{
+    "items": [
+        {
+            "address": "someemail1@yahoo.com",
+            "code": "554",
+            "created_at": "Thu, 07 May 2015 23:07:47 UTC",
+            "error": "554 delivery error: dd This user doesn't have a yahoo.com account (someemail1@yahoo.com) [0] - mta1481.mail.ne1.yahoo.com"
+        },
+        {
+            "address": "someemail2@gmail.com",
+            "code": "550",
+            "created_at": "Sun, 03 May 2015 13:22:49 UTC",
+            "error": "550 5.1.1 The email account that you tried to reach does not exist. Please try\n5.1.1 double-checking the recipient's email address for typos or\n5.1.1 unnecessary spaces. Learn more at\n5.1.1 http://support.google.com/mail/bin/answer.py?answer=6596 xv3si12818843vdb.43 - gsmtp"
+        },
+        {
+            "address": "someemail3@domain.com",
+            "code": "550",
+            "created_at": "Thu, 02 Jul 2015 17:01:31 UTC",
+            "error": "550 No Such User Here"
+        },
+        {
+            "address": "someemail4@domain.com",
+            "code": "550",
+            "created_at": "Thu, 21 May 2015 03:30:38 UTC",
+            "error": "550 Administrative prohibition"
+        }
+    ],
+    "paging": {
+        "first": "https://api.mailgun.net/v3/mg.yourdomain.com/bounces?limit=100",
+        "last": "https://api.mailgun.net/v3/mg.yourdomain.com/bounces?page=last&limit=100",
+        "next": "https://api.mailgun.net/v3/mg.yourdomain.com/bounces?page=next&address=someemail4%40domain.com&limit=100",
+        "previous": "https://api.mailgun.net/v3/mg.yourdomain.com/bounces?page=previous&address=someemail1%40yahoo.com&limit=100"
+    }
+}
 
 {{{                                                                 *vim-tip-9*
 :.!comando        Filtrar la linea actual.
@@ -262,5 +305,7 @@ Questions? ~
    ▄█.▀█▄▐▀▀▄.▄█▀▀█.██.▄▄▐█·▄█▀▀█.▄▀▀▀█▄
    ▐█▄▪▐█▐█•█▌▐█.▪▐▌▐███▌▐█▌▐█.▪▐▌▐█▄▪▐█
    ·▀▀▀▀..▀..▀.▀..▀.·▀▀▀.▀▀▀.▀..▀..▀▀▀▀.
+
+                      https://github.com/jfgomez86/Vim-Bash-Tips
 
 // vim: ft=help foldmethod=marker modifiable noreadonly
